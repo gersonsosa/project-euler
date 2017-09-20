@@ -4,52 +4,46 @@ import java.math.BigInteger;
 import java.util.Objects;
 
 /**
- * @author <a href="mailto:gg.sosa@transportsystems.co">Gerson Sosa</a>
+ * @author <a href="mailto:gersonsosa@gmail.com">Gerson Sosa</a>
  */
 public class MagicOfThree {
 
-	public static void findLeastMultipleOfNumberEndingWithThree() {
-
-		BigInteger num = BigInteger.ONE;
-		for (BigInteger i = BigInteger.TEN;
-			 i.compareTo(BigInteger.valueOf(Long.MAX_VALUE)) < 0;
-			 i = i.multiply(BigInteger.TEN)) {
-			num = i.add(num);
-			BigInteger num3 = BigInteger.valueOf(3);
-			for (BigInteger j = BigInteger.TEN; j.compareTo(i) < 0; j = j.add(BigInteger.TEN)) {
-				if (Objects.equals(num.mod(num3), BigInteger.ZERO)) {
-					System.out.printf("number: %d multiple: %d%n", num, num3);
-					break;
-				}
-				num3 = num3.add(j);
+	public static void findLeastMultipleOfNumberEndingWithThree(int num) {
+	    int i = 0;
+		while (true) {
+			BigInteger ones = new BigInteger(getStringOnes(i));
+			System.out.printf("i: %d ones: %s%n", i, ones);
+			if (Objects.equals(ones.mod(BigInteger.valueOf(num)), BigInteger.ZERO)) {
+				System.out.printf("number: %d multiple: %d%n", ones, num);
+				break;
 			}
-		}
-	}
-
-	public static void findLeastMultipleOfNumberEndingWithThree2() {
-
-		BigInteger num3 = BigInteger.valueOf(3);
-		for (BigInteger j = BigInteger.TEN; j.compareTo(BigInteger.valueOf(Long.MAX_VALUE)) < 0; j = j.add(BigInteger.TEN)) {
-			BigInteger num;
-			for (int i = 0; i < Integer.MAX_VALUE; i++) {
-				num = new BigInteger(getStringOnes(i));
-				if (Objects.equals(num.mod(num3), BigInteger.ZERO)) {
-					System.out.printf("number: %d multiple: %d%n", num, num3);
-					break;
-				}
-			}
-			num3 = j.add(BigInteger.valueOf(3L));
+			i++;
 		}
 	}
 
 	private static String getStringOnes(int i) {
 
-		String result = "111";
+		String one = "1";
+		String result = "";
 
-		for (int j = 0; j < i; j++) {
-			result = result.concat(result);
+		for (int j = 0; j <= i; j++) {
+			result += one;
 		}
 
 		return result;
+	}
+
+	public static void findLeastMultipleOfNumberEndingWithThreeOLogN(int num3) {
+
+		BigInteger num = BigInteger.ONE;
+		BigInteger i = BigInteger.TEN;
+		while (true) {
+			num = i.add(num);
+			if (Objects.equals(num.mod(BigInteger.valueOf(num3)), BigInteger.ZERO)) {
+				System.out.printf("number: %d multiple: %d%n", num, num3);
+				break;
+			}
+			i = i.multiply(BigInteger.TEN);
+		}
 	}
 }
