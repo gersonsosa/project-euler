@@ -12,7 +12,6 @@ public class MagicOfThree {
 	    int i = 0;
 		while (true) {
 			BigInteger ones = new BigInteger(getStringOnes(i));
-			System.out.printf("i: %d ones: %s%n", i, ones);
 			if (Objects.equals(ones.mod(BigInteger.valueOf(num)), BigInteger.ZERO)) {
 				System.out.printf("number: %d multiple: %d%n", ones, num);
 				break;
@@ -24,13 +23,13 @@ public class MagicOfThree {
 	private static String getStringOnes(int i) {
 
 		String one = "1";
-		String result = "";
+		StringBuilder result = new StringBuilder();
 
 		for (int j = 0; j <= i; j++) {
-			result += one;
+			result.append(one);
 		}
 
-		return result;
+		return result.toString();
 	}
 
 	public static void findLeastMultipleOfNumberEndingWithThreeOLogN(int num3) {

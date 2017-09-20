@@ -13,19 +13,8 @@ public class ProjectEuler {
 
 		System.out.printf("The smallest multiple of %d to %d is %d%n", 1, 20, LeastCommonMultiple.findForIntegerRange(1, 20));
 
-//		MagicOfThree.findLeastMultipleOfNumberEndingWithThree();
-//		MagicOfThree.findLeastMultipleOfNumberEndingWithThree2();
-
-		int three = 3;
-		int oneHundredEleven = 111;
-		int thirteen = 17;
-		int number111111 = 111111;
-		int thirtyThree = 33;
-		System.out.printf("decimal: %d, binary: %s%n", three, Integer.toBinaryString(three));
-		System.out.printf("decimal: %d, binary: %s%n", oneHundredEleven, Integer.toBinaryString(oneHundredEleven));
-		System.out.printf("decimal: %d, binary: %s%n", thirteen, Integer.toBinaryString(thirteen));
-		System.out.printf("decimal: %d, binary: %s%n", number111111, Integer.toBinaryString(number111111));
-		System.out.printf("decimal: %d, binary: %s%n", thirtyThree, Integer.toBinaryString(thirtyThree));
+		MagicOfThree.findLeastMultipleOfNumberEndingWithThree(23);
+		MagicOfThree.findLeastMultipleOfNumberEndingWithThreeOLogN(113);
 
 		final Map.Entry<Integer, Integer> mostFrequentAndCountInArray = MostFrequent.findMostFrequentAndCountInArray(
 				new int[] { 1, 3, 4, 5, 2, 2, 3, 2 });
