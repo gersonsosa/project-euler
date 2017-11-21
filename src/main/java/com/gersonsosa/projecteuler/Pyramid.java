@@ -13,7 +13,7 @@ class Pyramid {
             checkPyramid:
             for (int i = 0; i + squareSize <= n; i++) {
                 for (int j = 0; j + squareSize <= m; j++) {
-                    if (checkPyramid(copyOfRange(h, i, j, i + squareSize, j + squareSize), pyramidSize, k)) {
+                    if (checkPyramid(h, i, j, i + squareSize, j + squareSize, pyramidSize, k)) {
                         largestPyramid = pyramidSize;
                         break checkPyramid;
                     }
@@ -23,20 +23,16 @@ class Pyramid {
         return largestPyramid;
     }
 
-    static int[][] copyOfRange(int[][] h, int fromX, int fromY, int toX, int toY) {
-        int[][] newArray = new int[toX - fromX][];
+    private static boolean checkPyramid(int[][] h, int fromX, int fromY, int toX, int toY, int pyramidSize, int blocks) {
         for (int i = fromX; i < toX; i++) {
-            newArray[i - fromX] = new int[toY - fromY];
-            System.arraycopy(h[i], fromY, newArray[i - fromX], 0, toY - fromY);
-        }
-        return newArray;
-    }
+            final int ir = i - fromX;
+            for (int j = fromY; j < toY; j++) {
+                final int jr = j - fromY;
 
-    private static boolean checkPyramid(int[][] h, int pyramidSize, int blocks) {
-        for (int i = 0; i < h.length; i++) {
-            for (int j = 0; j < h[i].length; j++) {
                 int current = h[i][j];
-                int value = findMin(i + 1, j + 1, 2 * pyramidSize - (i + 1), 2 * pyramidSize - (j + 1));
+
+                int value = findMin(ir + 1, jr + 1, 2 * pyramidSize - (ir + 1), 2 * pyramidSize - (jr + 1));
+
                 if (current > value) {
                     return false;
                 } else if (value != current) {

@@ -84,41 +84,4 @@ public class PyramidTest {
 
         Assertions.assertThat(Pyramid.findLargestPyramid(n, m, k, h)).isEqualTo(0);
     }
-
-    @Test
-    public void shouldCopyRangeOfTwoDimensionalArray() {
-
-        int[][] h = {
-                {0, 1, 1, 1, 1, 1},
-                {1, 1, 1, 1, 1, 3},
-                {1, 1, 1, 1, 1, 1},
-                {1, 1, 1, 2, 1, 1},
-                {1, 1, 1, 1, 1, 1},
-                {1, 1, 1, 1, 1, 1}};
-
-        Assertions.assertThat(Pyramid.copyOfRange(h, 1, 0, h.length, 5)).isEqualTo(
-                new int[][]{
-                        {1, 1, 1, 1, 1},
-                        {1, 1, 1, 1, 1},
-                        {1, 1, 1, 2, 1},
-                        {1, 1, 1, 1, 1},
-                        {1, 1, 1, 1, 1}
-                }
-        );
-        Assertions.assertThat(Pyramid.copyOfRange(h, 0, 0, 1, 1)).isEqualTo(
-                new int[][]{
-                        {0}
-                }
-        );
-
-        Assertions.assertThat(Pyramid.copyOfRange(h, 0, 1, 5, 6)).isEqualTo(
-                new int[][]{
-                        {1, 1, 1, 1, 1},
-                        {1, 1, 1, 1, 3},
-                        {1, 1, 1, 1, 1},
-                        {1, 1, 2, 1, 1},
-                        {1, 1, 1, 1, 1}
-                }
-        );
-    }
 }
